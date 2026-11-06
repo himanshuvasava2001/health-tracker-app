@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vitality — Health Tracking App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">V</div>
+          <div>
+            <p class="eyebrow">Wellness</p>
+            <h1>Vitality</h1>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active">Dashboard</button>
+          <button class="nav-item">Nutrition</button>
+          <button class="nav-item">Activity</button>
+          <button class="nav-item">Sleep</button>
+          <button class="nav-item">Insights</button>
+        </nav>
+
+        <div class="profile-card">
+          <div class="profile-avatar">HV</div>
+          <div>
+            <strong>Himanshu</strong>
+            <span>Healthy streak: 12 days</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Overview</p>
+            <h2>Health dashboard</h2>
+          </div>
+          <div class="date-picker-wrap">
+            <label for="dayPicker">Date</label>
+            <input id="dayPicker" type="date" />
+          </div>
+        </header>
+
+        <section class="stats-grid" id="statsGrid"></section>
+
+        <section class="content-grid">
+          <div class="panel large-panel">
+            <div class="panel-header">
+              <h3>Weekly progress</h3>
+              <span class="chip success" id="weeklyGoalStatus">On track</span>
+            </div>
+            <div class="chart" id="weeklyChart"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Quick update</h3>
+            </div>
+
+            <form id="healthForm" class="health-form">
+              <div class="field-row">
+                <label>
+                  Steps
+                  <input id="stepsInput" type="number" min="0" value="8000" />
+                </label>
+                <label>
+                  Water (L)
+                  <input id="waterInput" type="number" min="0" step="0.1" value="2.5" />
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label>
+                  Sleep (hrs)
+                  <input id="sleepInput" type="number" min="0" step="0.5" value="7.5" />
+                </label>
+                <label>
+                  Calories
+                  <input id="caloriesInput" type="number" min="0" value="2200" />
+                </label>
+              </div>
+
+              <button type="submit" class="primary-btn">Save daily summary</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="bottom-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Meal log</h3>
+              <button class="add-btn" data-target="mealModal">+ Add</button>
+            </div>
+            <ul id="mealList" class="entry-list"></ul>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Workout log</h3>
+              <button class="add-btn" data-target="workoutModal">+ Add</button>
+            </div>
+            <ul id="workoutList" class="entry-list"></ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="mealModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Add meal</h3>
+          <button class="close-btn" data-close="mealModal">×</button>
+        </div>
+        <form id="mealForm" class="modal-form">
+          <label>
+            Meal name
+            <input name="name" type="text" placeholder="Greek yogurt bowl" required />
+          </label>
+          <label>
+            Calories
+            <input name="calories" type="number" min="0" required />
+          </label>
+          <label>
+            Time
+            <input name="time" type="time" required />
+          </label>
+          <button type="submit" class="primary-btn">Add meal</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="workoutModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Add workout</h3>
+          <button class="close-btn" data-close="workoutModal">×</button>
+        </div>
+        <form id="workoutForm" class="modal-form">
+          <label>
+            Activity
+            <input name="name" type="text" placeholder="Morning run" required />
+          </label>
+          <label>
+            Duration (mins)
+            <input name="duration" type="number" min="0" required />
+          </label>
+          <label>
+            Calories burned
+            <input name="calories" type="number" min="0" required />
+          </label>
+          <button type="submit" class="primary-btn">Add workout</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
